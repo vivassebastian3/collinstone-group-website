@@ -1,26 +1,26 @@
 /* =========================================================
    Collinstone Group — Design Tokens & Base
-   Light "soft club" aesthetic: a bright, glowing glass-block
-   corridor built around a warm orange accent.
+   Light Nordic aesthetic: a stylized mountain scene that
+   scrolls sideways, built around the brand blue.
    ========================================================= */
 
 :root {
-  /* Brand colors (orange accent + cream, warm light tints for surfaces) */
-  --color-accent: #c9490b;
-  --color-accent-text: #8a3207;
-  --color-accent-deep: #9f3608;
-  --color-accent-light: #f4a574;
-  --color-accent-tint: #fbe5d3;
+  /* Brand colors (logo blue + icy tints for surfaces) */
+  --color-accent: #2f6496;
+  --color-accent-text: #1f4a75;
+  --color-accent-deep: #234f7d;
+  --color-accent-light: #86b8e6;
+  --color-accent-tint: #e2eefa;
   --color-cream: #d8cfbc;
-  --color-ink: #2b1b12;
+  --color-ink: #12263a;
   --color-white: #ffffff;
 
-  --color-border: rgba(201, 73, 11, 0.22);
-  --color-border-soft: rgba(201, 73, 11, 0.14);
-  --color-muted: #5f4a3b;
+  --color-border: rgba(47, 100, 150, 0.22);
+  --color-border-soft: rgba(47, 100, 150, 0.14);
+  --color-muted: #445c74;
 
-  --color-bg: #fde9d6;
-  --color-bg-soft: #fbdcbf;
+  --color-bg: #eaf3fb;
+  --color-bg-soft: #d9e8f5;
 
   /* Typography */
   --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
@@ -43,9 +43,9 @@
   --radius-md: 10px;
   --radius-lg: 18px;
 
-  --shadow-sm: 0 2px 16px rgba(201, 73, 11, 0.1);
-  --shadow-md: 0 10px 34px rgba(201, 73, 11, 0.18);
-  --shadow-lg: 0 24px 60px rgba(201, 73, 11, 0.26);
+  --shadow-sm: 0 2px 16px rgba(47, 100, 150, 0.1);
+  --shadow-md: 0 10px 34px rgba(47, 100, 150, 0.18);
+  --shadow-lg: 0 24px 60px rgba(47, 100, 150, 0.26);
 
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
   --duration-fast: 150ms;
@@ -84,7 +84,9 @@ body {
 }
 
 /* =========================================================
-   Ambient glowing corridor background (site-wide)
+   Nordic mountain background (site-wide)
+   Layers slide sideways as the page scrolls down (see main.js).
+   Nearer layers are wider, so they travel further: parallax.
    ========================================================= */
 
 .bg-scene {
@@ -93,90 +95,35 @@ body {
   z-index: -2;
   overflow: hidden;
   pointer-events: none;
-  background: radial-gradient(ellipse 75% 70% at 72% 42%, #fee9d2 0%, #fedcbb 38%, #fcd0a9 100%);
+  background: linear-gradient(180deg, #b9d6ef 0%, #d3e6f6 34%, #ebf4fb 62%, #f7fbfe 100%);
 }
 
-.bg-blob-track {
+.bg-sun {
   position: absolute;
-  inset: 0;
-  will-change: transform;
-}
-
-/* Perspective corridor — the site's persistent background art.
-   The vanishing point itself is redrawn on scroll (see main.js), so the
-   hallway's geometry genuinely reprojects as if a camera were moving
-   through it and panning up/down. This wrapper only adds a slow forward
-   zoom on top of that, scaled from the vanishing point. */
-
-.bg-corridor {
-  position: absolute;
-  inset: 0;
-  transform-origin: 72% 42%;
-  will-change: transform;
-}
-
-.bg-corridor-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.bg-blob {
-  position: absolute;
+  left: 66%;
+  top: 22%;
+  width: min(46vw, 620px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  filter: blur(100px);
+  background: radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.95) 9%, rgba(255, 255, 255, 0.5) 24%, rgba(255, 255, 255, 0) 68%);
+}
+
+.bg-layer {
+  position: absolute;
+  left: 0;
+  width: max(calc(var(--h) * var(--ar)), 130vw);
+  height: var(--h);
+  max-width: none;
   will-change: transform;
+  user-select: none;
 }
 
-.bg-blob--1 {
-  width: 620px; height: 620px;
-  top: -140px; left: -100px;
-  background: radial-gradient(circle at 32% 32%, var(--color-accent-light) 0%, transparent 72%);
-  opacity: 0.4;
-  animation: bgDrift1 28s ease-in-out infinite;
-}
-.bg-blob--2 {
-  width: 520px; height: 520px;
-  top: 12%; right: -160px;
-  background: radial-gradient(circle at 60% 40%, var(--color-cream) 0%, transparent 72%);
-  opacity: 0.55;
-  animation: bgDrift2 34s ease-in-out infinite;
-}
-.bg-blob--3 {
-  width: 720px; height: 720px;
-  top: 58%; left: 2%;
-  background: radial-gradient(circle at 50% 50%, var(--color-accent) 0%, transparent 72%);
-  opacity: 0.16;
-  animation: bgDrift3 40s ease-in-out infinite;
-}
-.bg-blob--4 {
-  width: 480px; height: 480px;
-  top: 80%; right: 4%;
-  background: radial-gradient(circle at 50% 50%, var(--color-accent-light) 0%, transparent 72%);
-  opacity: 0.3;
-  animation: bgDrift1 32s ease-in-out infinite reverse;
-}
-
-@keyframes bgDrift1 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(50px, 70px, 0) scale(1.08); }
-}
-@keyframes bgDrift2 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-60px, 50px, 0) scale(0.94); }
-}
-@keyframes bgDrift3 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(40px, -50px, 0) scale(1.06); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .bg-blob { animation: none !important; }
-  .bg-blob-track, .bg-corridor { transform: none !important; }
-}
-
-@media (max-width: 640px) {
-  .bg-blob { filter: blur(70px); }
+/* Keeps text readable wherever the peaks and pines happen to be */
+.bg-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(240, 247, 253, 0.5) 0%, rgba(240, 247, 253, 0.12) 45%, rgba(240, 247, 253, 0.3) 100%);
 }
 
 img {
@@ -270,17 +217,17 @@ button {
 .btn-primary {
   background: var(--color-accent);
   color: var(--color-white);
-  box-shadow: 0 6px 18px rgba(201, 73, 11, 0.28);
+  box-shadow: 0 6px 18px rgba(47, 100, 150, 0.28);
 }
 .btn-primary:hover {
   background: var(--color-accent-deep);
-  box-shadow: 0 10px 26px rgba(201, 73, 11, 0.38);
+  box-shadow: 0 10px 26px rgba(47, 100, 150, 0.38);
 }
 
 .btn-outline {
   background: rgba(255, 255, 255, 0.5);
   color: var(--color-accent-deep);
-  border-color: rgba(201, 73, 11, 0.45);
+  border-color: rgba(47, 100, 150, 0.45);
 }
 .btn-outline:hover {
   border-color: var(--color-accent);
@@ -291,7 +238,7 @@ button {
 .btn-ghost {
   background: transparent;
   color: var(--color-accent-deep);
-  border-color: rgba(201, 73, 11, 0.35);
+  border-color: rgba(47, 100, 150, 0.35);
 }
 .btn-ghost:hover {
   border-color: var(--color-accent);
@@ -307,7 +254,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 244, 232, 0.78);
+  background: rgba(240, 247, 253, 0.8);
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
   border-bottom: 1px solid var(--color-border-soft);
@@ -384,7 +331,7 @@ button {
 }
 .nav-cta:hover {
   background: var(--color-accent-deep);
-  box-shadow: 0 8px 22px rgba(201, 73, 11, 0.32);
+  box-shadow: 0 8px 22px rgba(47, 100, 150, 0.32);
 }
 
 .nav-toggle {
@@ -431,7 +378,7 @@ button {
     padding: var(--space-4) var(--space-3);
     border-radius: var(--radius-sm);
   }
-  .nav-links a:hover { background: rgba(201, 73, 11, 0.08); }
+  .nav-links a:hover { background: rgba(47, 100, 150, 0.08); }
   .nav-links a[aria-current="page"]::after { display: none; }
   .nav-cta { display: none; }
   .nav-toggle { display: inline-flex; }
@@ -512,7 +459,7 @@ button {
 section { padding-block: var(--space-9); }
 
 .section-soft {
-  background: rgba(201, 73, 11, 0.05);
+  background: rgba(47, 100, 150, 0.05);
 }
 
 .section-head {
@@ -590,8 +537,8 @@ section { padding-block: var(--space-9); }
   width: 52px;
   height: 52px;
   border-radius: var(--radius-md);
-  background: rgba(201, 73, 11, 0.1);
-  border: 1px solid rgba(201, 73, 11, 0.2);
+  background: rgba(47, 100, 150, 0.1);
+  border: 1px solid rgba(47, 100, 150, 0.2);
   color: var(--color-accent);
   display: flex;
   align-items: center;
@@ -654,7 +601,7 @@ section { padding-block: var(--space-9); }
 }
 
 .expertise-block:hover {
-  border-color: rgba(201, 73, 11, 0.4);
+  border-color: rgba(47, 100, 150, 0.4);
   box-shadow: var(--shadow-md);
 }
 
@@ -682,8 +629,8 @@ section { padding-block: var(--space-9); }
   width: 60px;
   height: 60px;
   border-radius: var(--radius-md);
-  background: rgba(201, 73, 11, 0.1);
-  border: 1px solid rgba(201, 73, 11, 0.2);
+  background: rgba(47, 100, 150, 0.1);
+  border: 1px solid rgba(47, 100, 150, 0.2);
   color: var(--color-accent);
   display: flex;
   align-items: center;
@@ -749,7 +696,7 @@ section { padding-block: var(--space-9); }
   position: relative;
   aspect-ratio: 4 / 5;
   border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, #ffe9d2 0%, #f5a96c 100%);
+  background: linear-gradient(160deg, #e6f1fb 0%, #7fb0dc 100%);
   border: 1px solid rgba(255, 255, 255, 0.7);
   display: flex;
   align-items: center;
@@ -836,7 +783,7 @@ section { padding-block: var(--space-9); }
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(201, 73, 11, 0.28);
+  border: 1px solid rgba(47, 100, 150, 0.28);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-ink);
@@ -866,7 +813,7 @@ section { padding-block: var(--space-9); }
 
 .cta-band {
   position: relative;
-  background: linear-gradient(135deg, #f8bc88 0%, #fbd3ab 100%);
+  background: linear-gradient(135deg, #a9cdee 0%, #d5e7f7 100%);
   border: 1px solid rgba(255, 255, 255, 0.75);
   color: var(--color-ink);
   border-radius: var(--radius-lg);
@@ -895,7 +842,7 @@ section { padding-block: var(--space-9); }
 .cta-band .btn-primary {
   background: var(--color-ink);
   color: var(--color-white);
-  box-shadow: 0 6px 18px rgba(90, 30, 5, 0.25);
+  box-shadow: 0 6px 18px rgba(10, 30, 60, 0.25);
 }
 .cta-band .btn-primary:hover {
   background: var(--color-accent-deep);
@@ -905,7 +852,7 @@ section { padding-block: var(--space-9); }
 .cta-band .btn-outline {
   background: transparent;
   color: var(--color-ink);
-  border-color: rgba(43, 27, 18, 0.5);
+  border-color: rgba(18, 38, 58, 0.5);
 }
 .cta-band .btn-outline:hover {
   background: rgba(255, 255, 255, 0.5);
@@ -951,8 +898,8 @@ section { padding-block: var(--space-9); }
   width: 56px;
   height: 56px;
   border-radius: var(--radius-md);
-  background: rgba(201, 73, 11, 0.1);
-  border: 1px solid rgba(201, 73, 11, 0.2);
+  background: rgba(47, 100, 150, 0.1);
+  border: 1px solid rgba(47, 100, 150, 0.2);
   color: var(--color-accent);
   display: flex;
   align-items: center;
@@ -988,7 +935,7 @@ section { padding-block: var(--space-9); }
 
 .site-footer {
   position: relative;
-  background: #f8c99c;
+  background: #bcd6ee;
   color: var(--color-ink);
   padding-block: var(--space-8) var(--space-6);
 }
@@ -998,7 +945,7 @@ section { padding-block: var(--space-9); }
   grid-template-columns: 1.4fr 1fr 1fr;
   gap: var(--space-7);
   padding-bottom: var(--space-7);
-  border-bottom: 1px solid rgba(43, 27, 18, 0.2);
+  border-bottom: 1px solid rgba(18, 38, 58, 0.2);
 }
 
 @media (max-width: 720px) {
