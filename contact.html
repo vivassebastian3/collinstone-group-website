@@ -17,30 +17,31 @@
     <svg class="bg-corridor-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <radialGradient id="corridorGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
-          <stop offset="12%" stop-color="#eef6ff" stop-opacity="0.44"/>
-          <stop offset="38%" stop-color="#86b8e6" stop-opacity="0.26"/>
-          <stop offset="70%" stop-color="#4a7dab" stop-opacity="0.08"/>
-          <stop offset="100%" stop-color="#4a7dab" stop-opacity="0"/>
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="18%" stop-color="#ffffff" stop-opacity="0.85"/>
+          <stop offset="45%" stop-color="#fde8d6" stop-opacity="0.5"/>
+          <stop offset="75%" stop-color="#f5c9a3" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#f5c9a3" stop-opacity="0"/>
         </radialGradient>
         <radialGradient id="corridorHalo" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#86b8e6" stop-opacity="0.13"/>
-          <stop offset="55%" stop-color="#4a7dab" stop-opacity="0.05"/>
-          <stop offset="100%" stop-color="#4a7dab" stop-opacity="0"/>
+          <stop offset="0%" stop-color="#f4a574" stop-opacity="0.4"/>
+          <stop offset="55%" stop-color="#f4a574" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#f4a574" stop-opacity="0"/>
         </radialGradient>
         <radialGradient id="lightFalloff" gradientUnits="userSpaceOnUse" cx="1150" cy="380" r="1400">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="40%" stop-color="#b3b3b3"/>
-          <stop offset="100%" stop-color="#3a3a3a"/>
+          <stop offset="0%" stop-color="#3d3d3d"/>
+          <stop offset="35%" stop-color="#a6a6a6"/>
+          <stop offset="100%" stop-color="#ffffff"/>
         </radialGradient>
         <mask id="corridorLightMask" maskUnits="userSpaceOnUse" x="-500" y="-500" width="2600" height="1900">
           <rect x="-500" y="-500" width="2600" height="1900" fill="url(#lightFalloff)"/>
         </mask>
         <style>
-          .corridor-spoke { stroke: #86b8e6; stroke-width: 1.1px; opacity: 0.55; fill: none; }
-          .ring-blue { stroke: #86b8e6; fill: none; opacity: 0.5; }
-          .ring-cream { stroke: #d8cfbc; fill: none; opacity: 0.58; }
+          .corridor-spoke { stroke: #c9490b; stroke-width: 1.1px; opacity: 0.45; fill: none; }
+          .ring-blue { stroke: #c9490b; fill: none; opacity: 0.48; }
+          .ring-cream { stroke: #b3a382; fill: none; opacity: 0.7; }
           .corridor-vp-glow { animation: corridorFlicker 6.5s ease-in-out infinite; }
+          .corridor-vp-dot { filter: drop-shadow(0 0 6px rgba(201, 73, 11, 0.55)); }
           @keyframes corridorFlicker {
             0%, 100% { opacity: 1; }
             45% { opacity: 0.92; }
@@ -86,7 +87,7 @@
           <polygon class="ring-blue" data-t="0.945" points="1087,359 1175,359 1175,409 1087,409" style="stroke-width:0.87px;"/>
         </g>
       </g>
-      <circle class="corridor-vp-dot" cx="1150" cy="380" r="5" fill="#f3f8ff"/>
+      <circle class="corridor-vp-dot" cx="1150" cy="380" r="5" fill="#ffffff"/>
     </svg>
   </div>
   <div class="bg-blob-track" data-depth="0.07"><div class="bg-blob bg-blob--1"></div></div>
@@ -122,8 +123,8 @@
   <section class="hero page-hero">
     <div class="container hero-inner">
       <p class="eyebrow">Contact</p>
-      <h1>Let's talk talent operations.</h1>
-      <p class="lede">Reach out for general inquiries, or connect directly with Alicia Johnsen to discuss your organization's talent infrastructure, integration, or analytics needs.</p>
+      <h1>Let's talk workforce strategy.</h1>
+      <p class="lede">Reach out for general inquiries, or connect directly with Alicia Johnsen to discuss your organization's workforce strategy, HR operating model, or transformation needs.</p>
     </div>
   </section>
 
@@ -136,7 +137,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
           </div>
           <h3>General Inquiries</h3>
-          <p class="role">Questions about Collinstone Group and our services.</p>
+          <p class="role">Questions about Collinstone Group and our advisory services.</p>
           <a class="email-link" href="mailto:Info@collinstonegroup.com">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
             Info@collinstonegroup.com
@@ -169,7 +170,7 @@
           <img class="mark" src="assets/img/logo-mark.png" alt="" width="30" height="30">
           <img class="wordmark" src="assets/img/logo-wordmark.png" alt="Collinstone Group">
         </div>
-        <p>Global talent operations consulting — infrastructure, M&amp;A integration, analytics, and strategic advisory.</p>
+        <p>Strategic workforce transformation advisory — workforce strategy, HR operating models, people analytics, and transaction integration.</p>
       </div>
       <div class="footer-col">
         <h4>Site</h4>
