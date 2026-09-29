@@ -84,9 +84,11 @@ body {
 }
 
 /* =========================================================
-   Nordic mountain background (site-wide)
-   Layers slide sideways as the page scrolls down (see main.js).
-   Nearer layers are wider, so they travel further: parallax.
+   Sunset mountain background (site-wide)
+   A limited teal + orange palette: dark teal at the sky's edges warming to
+   a pale sun and a burnt-orange ridge at the centre — echoing the flat
+   sunset-landscape reference. Layers slide sideways as the page scrolls
+   down (see main.js); nearer layers are wider, so they travel further.
    ========================================================= */
 
 .bg-scene {
@@ -95,18 +97,18 @@ body {
   z-index: -2;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(180deg, #b9d6ef 0%, #d3e6f6 34%, #ebf4fb 62%, #f7fbfe 100%);
+  background: linear-gradient(180deg, #163947 0%, #3e6d80 14%, #8fb1c0 28%, #e7d9bd 42%, #f3e6d2 60%, #f6ecdd 100%);
 }
 
 .bg-sun {
   position: absolute;
-  left: 66%;
-  top: 22%;
-  width: min(46vw, 620px);
+  left: 52%;
+  top: 21%;
+  width: min(42vw, 560px);
   aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0%, rgba(255, 255, 255, 0.95) 9%, rgba(255, 255, 255, 0.5) 24%, rgba(255, 255, 255, 0) 68%);
+  background: radial-gradient(circle, #fdf8ee 0%, #fbecd6 10%, rgba(247, 210, 165, 0.6) 26%, rgba(233, 158, 96, 0.22) 46%, rgba(233, 158, 96, 0) 70%);
 }
 
 .bg-layer {
@@ -123,7 +125,7 @@ body {
 .bg-veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(240, 247, 253, 0.5) 0%, rgba(240, 247, 253, 0.12) 45%, rgba(240, 247, 253, 0.3) 100%);
+  background: linear-gradient(180deg, rgba(247, 236, 219, 0.55) 0%, rgba(247, 236, 219, 0.15) 40%, rgba(247, 236, 219, 0.32) 100%);
 }
 
 img {
