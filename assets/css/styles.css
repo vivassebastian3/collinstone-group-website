@@ -97,7 +97,7 @@ body {
   z-index: -2;
   overflow: hidden;
   pointer-events: none;
-  background: linear-gradient(180deg, #163947 0%, #3e6d80 14%, #8fb1c0 28%, #e7d9bd 42%, #f3e6d2 60%, #f6ecdd 100%);
+  background: linear-gradient(180deg, #163947 0%, #3e6d80 14%, #8fb1c0 28%, #f0ddb8 40%, #ffcf94 55%, #ffb35c 70%, #ff9a4d 85%, #ff8a3d 100%);
 }
 
 .bg-sun {
@@ -119,6 +119,11 @@ body {
   max-width: none;
   will-change: transform;
   user-select: none;
+  /* Softens the top edge of every layer, so wherever one layer's coverage
+     first begins below the sky (or a thin gap between two layers), it
+     fades in rather than cutting in as a hard, flat-topped edge. */
+  mask-image: linear-gradient(180deg, transparent 0, #000 10px, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 10px, #000 100%);
 }
 
 /* Keeps text readable wherever the peaks and pines happen to be */
@@ -126,6 +131,18 @@ body {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, rgba(247, 236, 219, 0.55) 0%, rgba(247, 236, 219, 0.15) 40%, rgba(247, 236, 219, 0.32) 100%);
+}
+
+/* A soft band of atmospheric haze sitting in the depth gap between the
+   mountains and the foothills in front of them — lighter, cooler, and
+   flatter than either, the way distant terrain hazes over with distance. */
+.bg-haze {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 54vh;
+  height: 24vh;
+  background: linear-gradient(180deg, rgba(184, 200, 210, 0) 0%, rgba(184, 200, 210, 0.6) 45%, rgba(184, 200, 210, 0.6) 68%, rgba(184, 200, 210, 0) 100%);
 }
 
 img {
