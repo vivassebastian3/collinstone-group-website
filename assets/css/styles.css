@@ -450,7 +450,7 @@ button {
 .hero .lede {
   margin-top: var(--space-6);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  color: var(--color-muted);
+  color: #000;
   max-width: 46ch;
   line-height: 1.65;
 }
@@ -493,14 +493,14 @@ section { padding-block: var(--space-9); }
 .section-head p {
   margin-top: var(--space-4);
   font-size: 1.1rem;
-  color: var(--color-muted);
+  color: #000;
   line-height: 1.65;
 }
 
 .lede-lg {
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   line-height: 1.6;
-  color: var(--color-ink);
+  color: #000;
   max-width: 52rem;
 }
 
