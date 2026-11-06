@@ -479,7 +479,7 @@ button {
   position: relative;
   margin-top: var(--space-6);
   font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  color: #000;
+  color: var(--color-ink);
   max-width: 46ch;
   line-height: 1.65;
 }
@@ -523,7 +523,7 @@ section { padding-block: var(--space-9); }
   position: relative;
   margin-top: var(--space-4);
   font-size: 1.1rem;
-  color: #000;
+  color: var(--color-ink);
   line-height: 1.65;
 }
 
@@ -531,7 +531,7 @@ section { padding-block: var(--space-9); }
   position: relative;
   font-size: clamp(1.15rem, 2vw, 1.5rem);
   line-height: 1.6;
-  color: #000;
+  color: var(--color-ink);
   max-width: 52rem;
 }
 
@@ -553,7 +553,7 @@ section { padding-block: var(--space-9); }
 
 .points-grid p {
   position: relative;
-  color: #000;
+  color: var(--color-ink);
   line-height: 1.6;
 }
 
