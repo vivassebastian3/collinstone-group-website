@@ -535,13 +535,40 @@ section { padding-block: var(--space-9); }
   max-width: 52rem;
 }
 
+.lede-lg + .lede-lg {
+  margin-top: var(--space-5);
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6) var(--space-7);
+  margin-top: var(--space-7);
+}
+
+.points-grid h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-2);
+}
+
+.points-grid p {
+  position: relative;
+  color: #000;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .points-grid { grid-template-columns: 1fr; }
+}
+
 /* A soft white haze sitting behind body copy that has no card/panel of its
    own, so it stays legible over the busy background scene without reading
    as a hard-edged box — the gradient fades out well before the pseudo
    element's own bounds. */
 .hero .lede::before,
 .section-head p::before,
-.lede-lg::before {
+.lede-lg::before,
+.points-grid p::before {
   content: "";
   position: absolute;
   inset: -0.85em -1.1em;
@@ -1078,6 +1105,16 @@ section { padding-block: var(--space-9); }
   color: var(--color-ink);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   max-width: 26ch;
+}
+
+.cta-band-text {
+  max-width: 46ch;
+}
+
+.cta-band-text p {
+  margin-top: var(--space-3);
+  color: var(--color-ink);
+  line-height: 1.6;
 }
 
 .cta-band .actions {
